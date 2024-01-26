@@ -1,0 +1,128 @@
+\documentclass{homework}
+
+\title{Homework}
+\author{John Smith}
+
+\begin{document}
+
+\maketitle
+
+\question
+Questions are automatically numbered, starting from one. Convenient packages such as \texttt{amsmath} and \texttt{hyperref} are included by default.
+
+Paragraphs are separated by whitespace instead of being indented.
+
+\question
+Now, let's consider a mathematical example.
+
+Suppose that $f$ and $g$ are real-valued functions such that $\forall n > 0$, $f(n) > 0$ and $g(n) > 0$.
+
+\begin{definition}[Big-O]
+    We denote by $f(n) = O(g(n))$ if and only if
+    \begin{align*}
+        (\exists c > 0) (\exists n_0 > 0) (\forall n \geq n_0) (0 \leq f(n) \leq c g(n)).
+    \end{align*}
+    Intuitively, the Big-O notation characterizes an \textit{upper bound} on the asymptotic behavior of a function. In this case, the function $g$ is an upper bound on the function $f$.
+\end{definition}
+
+\begin{definition}[Big-Omega]
+    We denote by $f(n) = \Omega(g(n))$ if and only if
+    \begin{align*}
+        (\exists c > 0) (\exists n_0 > 0) (\forall n \geq n_0) (0 \leq c g(n) \leq f(n)).
+    \end{align*}
+    Intuitively, the Big-$\Omega$ notation characterizes a \textit{lower bound} on the asymptotic behavior of a function. In this case, the function $g$ is a lower bound on the function $f$.
+\end{definition}
+
+\begin{definition}[Big-Theta]
+    We denote by $f(n) = \Theta(g(n))$ if and only if
+    \begin{align*}
+        (\exists c_1 > 0) (\exists c_2 > 0) (\exists n_0 > 0) (\forall n \geq n_0) (c_1 g(n) \leq f(n) \leq c_2 g(n)).
+    \end{align*}
+    Intuitively, the Big-$\Theta$ notation characterizes a \textit{tight bound} on the asymptotic behavior of a function. In this case, the function $g$ is a tight bound on the function $f$.
+\end{definition}
+
+The definitions of the various asymptotic notations are closely related to the definition of a limit. As a result, $\lim_{n \to \infty} f(n) / g(n)$ reveals a lot about the asymptotic relationship between $f$ and $g$, provided that the limit exists.
+
+\begin{lemma}
+    If the limit exists, then
+    \begin{align*}
+        \lim_{n \to \infty} \frac{f(n)}{g(n)} < \infty \implies f(n) = O(g(n)).
+    \end{align*}
+\end{lemma}
+
+\begin{lemma}
+    If the limit exists, then
+    \begin{align*}
+        \lim_{n \to \infty} \frac{f(n)}{g(n)} > 0 \implies f(n) = \Omega(g(n)).
+    \end{align*}
+\end{lemma}
+
+\begin{lemma}
+\lemlabel{limit-big-theta}
+    If the limit exists, then
+    \begin{align*}
+        0 < \lim_{n \to \infty} \frac{f(n)}{g(n)} < \infty \implies f(n) = \Theta(g(n)).
+    \end{align*}
+\end{lemma}
+
+Note that \texttt{*} can be used instead of \verb|\cdot|, and \verb|\R| instead of \verb|\mathbb{R}|. For a normal asterisk, use \verb|\ast|. Of course, there are also macros for the natural numbers etc. Commands such as \verb|\abs{}| and \verb|\set{}| can be used to create (scaled) delimiters. We demonstrate them in the following proof of \lemref{limit-big-theta}.
+
+\begin{proof}
+    Suppose that
+    \begin{align*}
+        \lim_{n \to \infty} \frac{f(n)}{g(n)} = L \text{, for some } L \in \R \text{ such that } 0 < L < \infty.
+    \end{align*}
+
+    By the definition of limit,
+    \begin{align*}
+        \lim_{n \to \infty} \frac{f(n)}{g(n)} = L & \Longleftrightarrow (\forall \epsilon > 0) (\exists n_0 > 0) (\forall n \geq n_0) \left( \abs{\frac{f(n)}{g(n)} - L} < \epsilon \right) \\
+        & \Longleftrightarrow (\forall \epsilon > 0) (\exists n_0 > 0) (\forall n \geq n_0) ((L - \epsilon) g(n) < f(n) < (L + \epsilon) g(n)).
+    \end{align*}
+
+    If we choose $\epsilon = L/2$, then
+    \begin{align*}
+        & \ (\exists n_0 > 0) (\forall n \geq n_0) (L/2 * g(n) < f(n) < 3 L/2 * g(n)) \\
+        \Longrightarrow & \ (\exists c_1 > 0) (\exists c_2 > 0) (\exists n_0 > 0) (\forall n \geq n_0) (c_1 g(n) \leq f(n) \leq c_2 g(n)) \\
+        \Longrightarrow & \ f(n) = \Theta(g(n)).
+    \end{align*}
+\end{proof}
+
+\newpage
+
+\question
+Some questions may consist of multiple parts. Let's consider the following example.
+
+Ogden's lemma is a generalization of the pumping lemma for context-free languages.
+
+\begin{theorem}[Ogden's Lemma]
+    Let $L$ be a context-free language. Then there exists a constant $n \geq 0$ such that for every string $z \in L$ where $\abs{z} \geq n$, and for every way of ``marking'' $n$ or more of the positions in $z$, we can break $z$ into five substrings, $z = uvwxy$, such that:
+    \begin{enumerate}
+        \item $vx$ has at least one marked position,
+        \item $vwx$ has at most $n$ marked positions, and
+        \item for all $i \geq 0$, the string $u v^i w x^i y$ is also in $L$.
+    \end{enumerate}
+    In the special case where every position is marked, Ogden's lemma is equivalent to the pumping lemma for context-free languages.
+\end{theorem}
+
+\questionpart
+Prove Ogden's lemma.
+
+\questionpart
+There exist context-free languages for which no unambiguous context-free grammar can exist. Such languages are called \textit{inherently ambiguous}.
+
+Let $L_0 = \set{a^n b^m c^m \mid m, n \geq 1}$ and $L_1 = \set{a^m b^n c^n \mid m, n \geq 1}$. Using Ogden's lemma, show that the language $L = L_0 \cup L_1$ is inherently ambiguous.
+
+% \questionpart
+% A
+
+% \questionpart
+% A
+
+\question[A]
+Optionally, you can fully customize the numbering of each question \dots
+
+\setcounter{question}{7}
+\question
+\dots{} or skip a few, using the \verb|\setcounter{exercise}{x}| command.
+
+\end{document}

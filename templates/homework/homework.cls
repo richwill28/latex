@@ -270,7 +270,7 @@
     \newaliascnt{#1}{equation}
     \newtheorem{#1}[#1]{\MakeUppercase#1}
     \newtheorem*{#1*}{\MakeUppercase#1}
-    \aliascntresetthe{#1}   % Section 1.2 of mirrors.ctan.org/macros/latex/contrib/oberdiek/aliascnt.pdf
+    \aliascntresetthe{#1} % Section 1.2 of mirrors.ctan.org/macros/latex/contrib/oberdiek/aliascnt.pdf
 }
 
 \theoremstyle{hw-plain}
@@ -321,8 +321,7 @@
 \DeclarePairedDelimiter{\@angleb}{\langle}{\rangle}
 \DeclarePairedDelimiter{\@norm}{\lVert}{\rVert}
 \DeclarePairedDelimiterX{\@set}[1]{\{}{\}}{\@renewmid#1}
-% \nonscript suppresses \, in (script)script style
-\DeclarePairedDelimiterX{\@Set}[1]{\{}{\}}{\@renewmid\nonscript\,#1\nonscript\,}
+\DeclarePairedDelimiterX{\@Set}[1]{\{}{\}}{\@renewmid\nonscript\,#1\nonscript\,} % \nonscript suppresses \, in (script)script style
 
 \def\abs{\@ifstar{\@abs}{\@abs*}}
 \def\ceil{\@ifstar{\@ceil}{\@ceil*}}

@@ -60,6 +60,10 @@
 \DeclareRobustCommand*\date[1]{\gdef\@date{\LibertinusDisplay#1}}
 \date\today % reinitializes \date with default value, so correct font is used
 
+\RequirePackage{eucal}                      % Replaces the default \mathcal{} font
+\RequirePackage{amsfonts}                   % Replaces the default \mathbb{} font
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}   % tex.stackexchange.com/questions/234451
+
 
 % --------[ PACKAGES: LANGUAGE ]------------------------------------------------
 
@@ -162,7 +166,11 @@
 
 % Swaps definition of \epsilon and \varepsilon
 \DeclareMathSymbol{\epsilon}{\libus@lcgc}{letters}{"22}
-\DeclareMathSymbol{\varepsilon}{\libus@lcgc}{operators}{"0F}
+\DeclareMathSymbol{\varepsilon}{\libus@lcgc}{letters}{"0F}
+
+% Swaps definition of \phi and \varphi
+\DeclareMathSymbol{\phi}{\libus@lcgc}{letters}{"27}
+\DeclareMathSymbol{\varphi}{\libus@lcgc}{letters}{"1E}
 
 % Imports blackboard 1 from STIX (missing in Libertinus)
 \DeclareMathSymbol{\@bbone}{\mathord}{stix2-symbols3}{"31}
@@ -337,8 +345,8 @@
 % tex.stackexchange.com/a/42728
 \newcommand*{\numberthis}[1]{\stepcounter{equation}\tag{\theequation}\label{#1}}
 
-\newcommand{\N}{\mathbb N}
-\newcommand{\Z}{\mathbb Z}
-\newcommand{\Q}{\mathbb Q}
-\newcommand{\R}{\mathbb R}
-\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}

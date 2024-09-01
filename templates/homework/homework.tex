@@ -44,14 +44,14 @@ Suppose that $f$ and $g$ are real-valued functions such that $\forall n > 0$, $f
 The definitions of the various asymptotic notations are closely related to the definition of a limit. As a result, $\lim_{n \to \infty} f(n) / g(n)$ reveals a lot about the asymptotic relationship between $f$ and $g$, provided that the limit exists.
 
 \begin{lemma}
-    If the limit exists, then
+    Assume that the following limit exists. We have
     \begin{align*}
         \lim_{n \to \infty} \frac{f(n)}{g(n)} < \infty \implies f(n) = O(g(n)).
     \end{align*}
 \end{lemma}
 
 \begin{lemma}
-    If the limit exists, then
+    Assume that the following limit exists. We have
     \begin{align*}
         \lim_{n \to \infty} \frac{f(n)}{g(n)} > 0 \implies f(n) = \Omega(g(n)).
     \end{align*}
@@ -59,7 +59,7 @@ The definitions of the various asymptotic notations are closely related to the d
 
 \begin{lemma}
     \lemlabel{limit-big-theta}
-    If the limit exists, then
+    Assume that the following limit exists. We have
     \begin{align*}
         0 < \lim_{n \to \infty} \frac{f(n)}{g(n)} < \infty \implies f(n) = \Theta(g(n)).
     \end{align*}
